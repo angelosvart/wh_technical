@@ -1,0 +1,291 @@
+$color-background: rgb(229, 229, 221);
+$color-text: rgb(11, 18, 21);
+$color-highlight: rgb(60, 72, 88);
+$color-background-inverted:  #2b2b2b;
+$color-text-inverted: rgb(255, 255, 255);
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	min-height: 100vh;	
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+    background-color: $color-background;
+    animation: fadeIn 0.8s ease-in;
+    overflow-y: scroll;
+    main {
+        .slider-container {
+            max-width: 100vw;
+            .slider {
+                display: flex;
+                overflow-x: hidden;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                picture {
+                    scroll-snap-align: start;
+                    flex-shrink: 0;
+                    width: 100%;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            .slider-control {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: -3em;
+                .dot {
+                    height: 1em;
+                    width: 1em;
+                    background-color: $color-highlight;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin: 0 1em;
+                    cursor: pointer;
+                    &:hover, &:focus {
+                        background-color: $color-text;
+                        animation: dotAnimation 0.4s ease-out;
+                    }
+                }
+                .active {
+                    background-color: $color-text;
+                    transform: scale(1.1);
+                }
+            }  
+        }
+        .container {
+            margin-top: 1em;
+            .card {
+                margin: 3em auto;
+                background-color: $color-background-inverted;
+                padding: 1em;
+                border-radius: 10px;
+                box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+                width: 90%;
+                @media only screen and (min-width: 768px) {
+                    width: 70%;
+                    margin: 3em auto;
+                }
+                .input-holder {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1;
+                    input {
+                        flex-grow: 4;
+                        padding: 0.5em;
+                        font-size: 0.8em;
+                        box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+                        border-radius: 5px;
+                        font-family: "Poppins", sans-serif;
+                        width: 100%;
+                        z-index: 1;
+                        @media only screen and (min-width: 768px) {
+                            font-size: 1em;
+                        }
+                        &:focus {
+                            outline-color: $color-background;
+                        }
+                    }
+                    .send {
+                        width: 40%;
+                        text-align: center;
+                        flex-grow: 0.5;
+                        background-color: $color-text-inverted;
+                        display: inline-block;
+                        padding: 0.55em;
+                        margin-left: 1em;
+                        border-radius: 5px;
+                        box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+                        cursor: pointer;
+                        transition: all 0.2s ease-in;
+                        position: relative;
+                        color: $color-background-inverted;
+                        font-size: 0.8em;
+                        @media only screen and (min-width: 768px) {
+                            font-size: 1em;
+                        }
+                        &:hover, &:focus {
+                            background-color:rgba(255,255,255, 0.6);
+                            transform: scale(1.03);
+                        }
+                        &.inactive {
+                            cursor: wait;
+                        }
+                    }
+                }
+                .info {
+                    position: absolute;
+                    margin-top: 1.8em;
+                    background-color: $color-highlight;
+                    padding: 0.7em;
+                    border-radius: 30px;
+                    color: $color-text-inverted;
+                    box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+                    font-size: 0.7em;
+                    z-index:2;
+                    width: 80%;
+                    text-align: center;
+                    @media only screen and (min-width: 768px) {
+                        width: auto;
+                        font-size: 0.9em;
+                        margin-top: 1.5em;
+                    }
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        bottom: 95%;
+                        left: 20px;
+                        width: 0;
+                        border-bottom: 15px solid $color-highlight;
+                        border-left: 15px solid transparent;
+                        border-right: 15px solid transparent;
+                    }
+                }
+                .error {
+                    position: absolute;
+                    margin-top: 1.8em;
+                    background-color: #D8000C;
+                    padding: 0.7em;
+                    border-radius: 30px;
+                    color: $color-text-inverted;
+                    box-shadow: 1px 2px rgba(0, 0, 0, 0.5);
+                    font-size: 0.7em;
+                    z-index:2;
+                    width: 80%;
+                    text-align: center;
+                    @media only screen and (min-width: 768px) {
+                        width: auto;
+                        font-size: 0.9em;
+                        margin-top: 1.5em;
+                    }
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        bottom: 95%;
+                        left: 20px;
+                        width: 0;
+                        border-bottom: 15px solid #D8000C;
+                        border-left: 15px solid transparent;
+                        border-right: 15px solid transparent;
+                    }
+                }
+            }
+            i {
+                margin-top: 0.3em;
+                font-size: 2em;
+                color: $color-highlight;
+                z-index: 3;
+                position: fixed;
+                left: 50%;
+                bottom: 2%;
+                display: none;
+                &.active {
+                        display: block;
+                }
+            }
+            .results-holder {
+                margin-top: -4.5em;
+                padding: 5em 0.5em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(60, 72, 88, 0.1);
+                clip-path: ellipse(243% 996px at 50% 999px);
+                @media only screen and (min-width: 768px) {
+                    clip-path: ellipse(160% 1020px at 50% 1020px);
+                }
+                @media only screen and (min-width: 1024px) {
+                    clip-path: ellipse(110% 1051px at 50% 1020px);
+                }
+                
+                visibility: hidden;
+                .results {
+                    width: 100%;
+                    margin-bottom: 2em;
+                    @media only screen and (min-width: 768px) {
+                        width: 70%;
+                    }
+                    span {
+                        color: $color-text-inverted;
+                        text-align: center;
+                        display: block;
+                        font-size: 0.8em;
+                        @media only screen and (min-width: 768px) {
+                            font-size: 1em;
+                        }
+                    }
+                }
+                .repo-grid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-gap: 1em;
+                    align-content: center;
+                    grid-auto-flow: row dense;
+                    @media only screen and (min-width: 1025px) {
+                        grid-template-columns: 1fr 1fr;
+                        justify-items: center;
+                    }
+                    a {
+                        font-size: 0.9em;
+                        padding: 0.5em 1em;
+                        background-color: $color-text-inverted;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        color: $color-text;
+                        text-align: center;
+                        width: 100%;
+                        transition: all 0.2s ease-in;
+                        box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+                        overflow: hidden;
+                        @media only screen and (min-width: 768px) {
+                            font-size: 1em;
+                            overflow: visible;
+                        }
+                        @media only screen and (min-width: 1025px) {
+                            padding: 2em 1em;
+                            height: 100%;
+                        }
+                        &:hover, &:focus {
+                            opacity: 0.7;
+                            box-shadow: 3px 3px rgba(0, 0, 0, 0.6);
+                        }
+                    }
+                    .description {
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 0.9em;
+                        letter-spacing: 1.2px;
+                        @media only screen and (min-width: 768px) {
+                            font-size: 1.2em;
+                        }
+                        @media only screen and (min-width: 1024px) {
+                            grid-column: 1 / 3;
+                        } 
+                    }
+                }
+            }
+            
+        }
+
+    }
+}
+
+@keyframes dotAnimation {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
