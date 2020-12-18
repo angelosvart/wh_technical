@@ -8,7 +8,8 @@
     "build": "npm-run-all clean parcel:build",
     "parcel:dev": "parcel index.html",
     "parcel:build": "parcel build index.html",
-    "clean": "rimraf dist .cache .cache-loader"
+    "clean": "rimraf dist .cache .cache-loader",
+    "prodtest" : "http-server ./dist"
   },
   "author": "",
   "license": "ISC",
