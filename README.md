@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-## Run local server for prod (with http-server)
+## Build and run local server for prod (with http-server)
 
 ```
 npm run build
